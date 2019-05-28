@@ -1,0 +1,8 @@
+version: '3'
+services:
+        mindsy-microservice-evaluation:
+                image: 'mindsy-microservice-evaluation'
+                build: '.'
+                ports: 
+                        - "3003:5000"
+
