@@ -11,6 +11,8 @@ class PatPsychoHospModel(db.Model):
     patient_hosp_psy_id_patient = db.Column('fk_patient', db.Integer,
                                             db.ForeignKey('PATIENT.id_patient'), nullable=False)
 
+    tests = db.relationship('TestModel', backref='PAT_PSYCHO_HOSP', lazy='dynamic', cascade='all, delete-orphan')
+
     def __init__(self, pat_psycho_hosp_id_psycho_hosp, patient_hosp_psy_id_patient):
         self.pat_psycho_hosp_id_psycho_hosp = pat_psycho_hosp_id_psycho_hosp
         self.patient_hosp_psy_id_patient = patient_hosp_psy_id_patient
