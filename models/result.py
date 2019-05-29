@@ -23,14 +23,16 @@ class ResultModel(db.Model):
     #     self.person_pat_id = person_pat_id
     #     self.accountable_patient_registry_acc = accountable_patient_registry_acc
     #     self.status = status
-    #
-    # def json(self):
-    #     return {
-    #         'id_patient': self.id_patient, 'scholarity': self.scholarity, 'observation': self.observation,
-    #         'manual_domain': self.manual_domain.value, 'registry number': self.registry_number_pat,
-    #         'date of birth': self.dt_birth.strftime("%d-%m-%Y"), 'status': self.status.value
-    #     }
-    #
+
+    def json(self):
+        return {
+                    'id_result': self.id_result,
+                    'gross_score': self.gross_score,
+                    'considerate_score': self.considerate_score,
+                    'classification': self.classification,
+                    'evaluation_test_result_id_evaluation_evaluation': self.evaluation_test_result_id_evaluation_test
+                }
+
     # @classmethod
     # def find_by_id(cls, id):
     #     return cls.query.filter_by(id_patient=id).first()
@@ -38,11 +40,11 @@ class ResultModel(db.Model):
     # @classmethod
     # def find_by_registry_number_pat(cls, registry_number_pat):
     #     return cls.query.filter_by(registry_number_pat=registry_number_pat).first()
-    #
-    # def save_to_db(self):
-    #     db.session.add(self)
-    #     db.session.commit()
-    #
-    # def delete_from_db(self):
-    #     db.session.delete(self)
-    #     db.session.commit()
+
+    def save_to_db(self):
+        db.session.add(self)
+        db.session.commit()
+
+    def delete_from_db(self):
+        db.session.delete(self)
+        db.session.commit()

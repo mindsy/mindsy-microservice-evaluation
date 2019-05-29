@@ -25,14 +25,18 @@ class EvaluationModel(db.Model):
     #     self.person_pat_id = person_pat_id
     #     self.accountable_patient_registry_acc = accountable_patient_registry_acc
     #     self.status = status
-    #
-    # def json(self):
-    #     return {
-    #         'id_patient': self.id_patient, 'scholarity': self.scholarity, 'observation': self.observation,
-    #         'manual_domain': self.manual_domain.value, 'registry number': self.registry_number_pat,
-    #         'date of birth': self.dt_birth.strftime("%d-%m-%Y"), 'status': self.status.value
-    #     }
-    #
+
+    def json(self):
+        return {
+                    'id_evaluation': self.id_evaluation,
+                    'dt_start': self.dt_start,
+                    'dt_end': self.dt_end,
+                    'conclusion': self.conclusion,
+                    'anamnese': self.anamnese,
+                    'test_pat_psycho_hosp_id_pat_psycho_hosp': self.test_pat_psycho_hosp_id_pat_psycho_hosp,
+                    'evaluation_tests': [evaluation_test.json() for evaluation_test in self.evaluation_tests.all()]
+                }
+
     # @classmethod
     # def find_by_id(cls, id):
     #     return cls.query.filter_by(id_patient=id).first()
@@ -40,11 +44,11 @@ class EvaluationModel(db.Model):
     # @classmethod
     # def find_by_registry_number_pat(cls, registry_number_pat):
     #     return cls.query.filter_by(registry_number_pat=registry_number_pat).first()
-    #
-    # def save_to_db(self):
-    #     db.session.add(self)
-    #     db.session.commit()
-    #
-    # def delete_from_db(self):
-    #     db.session.delete(self)
-    #     db.session.commit()
+
+    def save_to_db(self):
+        db.session.add(self)
+        db.session.commit()
+
+    def delete_from_db(self):
+        db.session.delete(self)
+        db.session.commit()

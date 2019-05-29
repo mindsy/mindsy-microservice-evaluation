@@ -30,13 +30,16 @@ class TestModel(db.Model):
     #     self.accountable_patient_registry_acc = accountable_patient_registry_acc
     #     self.status = status
     #
-    # def json(self):
-    #     return {
-    #         'id_patient': self.id_patient, 'scholarity': self.scholarity, 'observation': self.observation,
-    #         'manual_domain': self.manual_domain.value, 'registry number': self.registry_number_pat,
-    #         'date of birth': self.dt_birth.strftime("%d-%m-%Y"), 'status': self.status.value
-    #     }
-    #
+
+    def json(self):
+        return {
+                    'id_test': self.id_test,
+                    'name': self.name,
+                    'description': self.description,
+                    'maximum_score': self.maximum_score,
+                    'type': self.type.value
+                }
+
     # @classmethod
     # def find_by_id(cls, id):
     #     return cls.query.filter_by(id_patient=id).first()
@@ -45,10 +48,11 @@ class TestModel(db.Model):
     # def find_by_registry_number_pat(cls, registry_number_pat):
     #     return cls.query.filter_by(registry_number_pat=registry_number_pat).first()
     #
-    # def save_to_db(self):
-    #     db.session.add(self)
-    #     db.session.commit()
-    #
-    # def delete_from_db(self):
-    #     db.session.delete(self)
-    #     db.session.commit()
+
+    def save_to_db(self):
+        db.session.add(self)
+        db.session.commit()
+
+    def delete_from_db(self):
+        db.session.delete(self)
+        db.session.commit()
