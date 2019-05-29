@@ -3,7 +3,7 @@ from dotenv import load_dotenv
 from flask import Flask, jsonify
 from flask_restful import Api
 from flask_jwt_extended import JWTManager
-
+from resources.create_evaluation import CreateEvaluation
 app = Flask(__name__)
 load_dotenv(".env")
 
@@ -22,7 +22,7 @@ def create_tables():
 
 
 jwt = JWTManager(app)
-
+api.add_resource(CreateEvaluation, '/evaluation')
 
 if __name__ == '__main__':
     from db import db
