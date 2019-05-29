@@ -13,16 +13,11 @@ class ResultModel(db.Model):
                                                           db.Integer, db.ForeignKey('EVALUATION_TEST.id_person'),
                                                           unique=True, nullable=False)
 
-    # def __init__(self, scholarity, observation, manual_domain, registry_number_pat,
-    #              dt_birth, person_pat_id, accountable_patient_registry_acc, status):
-    #     self.scholarity = scholarity
-    #     self.observation = observation
-    #     self.manual_domain = manual_domain
-    #     self.registry_number_pat = registry_number_pat
-    #     self.dt_birth = dt_birth
-    #     self.person_pat_id = person_pat_id
-    #     self.accountable_patient_registry_acc = accountable_patient_registry_acc
-    #     self.status = status
+    def __init__(self, gross_score, considerate_score, classification, evaluation_test_result_id_evaluation_test):
+        self.gross_score = gross_score
+        self.considerate_score = considerate_score
+        self.classification = classification
+        self.evaluation_test_result_id_evaluation_test = evaluation_test_result_id_evaluation_test
 
     def json(self):
         return {
@@ -33,13 +28,9 @@ class ResultModel(db.Model):
                     'evaluation_test_result_id_evaluation_evaluation': self.evaluation_test_result_id_evaluation_test
                 }
 
-    # @classmethod
-    # def find_by_id(cls, id):
-    #     return cls.query.filter_by(id_patient=id).first()
-    #
-    # @classmethod
-    # def find_by_registry_number_pat(cls, registry_number_pat):
-    #     return cls.query.filter_by(registry_number_pat=registry_number_pat).first()
+    @classmethod
+    def find_by_id(cls, id_result):
+        return cls.query.filter_by(id_result=id_result).first()
 
     def save_to_db(self):
         db.session.add(self)

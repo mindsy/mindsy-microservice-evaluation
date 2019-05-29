@@ -14,22 +14,16 @@ class TestModel(db.Model):
     name = db.Column('name', db.String(100), nullable=False)
     description = db.Column('description', db.String(255))
     maximum_score = db.Column('maximum_score', db.Decimal(4))
-    type = db.Column('type', db.Enum(TypeEnum), nullable=False)
+    type_of_test = db.Column('type', db.Enum(TypeEnum), nullable=False)
 
     evaluation_tests = db.relationship('EvaluationTestModel', backref='TEST', lazy='dynamic',
                                        cascade='all, delete-orphan')
 
-    # def __init__(self, scholarity, observation, manual_domain, registry_number_pat,
-    #              dt_birth, person_pat_id, accountable_patient_registry_acc, status):
-    #     self.scholarity = scholarity
-    #     self.observation = observation
-    #     self.manual_domain = manual_domain
-    #     self.registry_number_pat = registry_number_pat
-    #     self.dt_birth = dt_birth
-    #     self.person_pat_id = person_pat_id
-    #     self.accountable_patient_registry_acc = accountable_patient_registry_acc
-    #     self.status = status
-    #
+    def __init__(self, name, description, maximum_score, type_of_test):
+        self.name = name
+        self.description = description
+        self.maximum_score = maximum_score
+        self.type_of_test = type_of_test
 
     def json(self):
         return {
@@ -37,17 +31,16 @@ class TestModel(db.Model):
                     'name': self.name,
                     'description': self.description,
                     'maximum_score': self.maximum_score,
-                    'type': self.type.value
+                    'type': self.type_of_test.value
                 }
 
-    # @classmethod
-    # def find_by_id(cls, id):
-    #     return cls.query.filter_by(id_patient=id).first()
-    #
-    # @classmethod
-    # def find_by_registry_number_pat(cls, registry_number_pat):
-    #     return cls.query.filter_by(registry_number_pat=registry_number_pat).first()
-    #
+    @classmethod
+    def find_by_id(cls, id_test):
+        return cls.query.filter_by(id_test=id_test).first()
+
+    @classmethod
+    def find_by_name(cls, name):
+        return cls.query.filter_by(name=name).first()
 
     def save_to_db(self):
         db.session.add(self)
