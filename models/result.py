@@ -5,8 +5,8 @@ class ResultModel(db.Model):
     __tablename__ = 'RESULT'
 
     id_result = db.Column('id_result', db.Integer, primary_key=True)
-    gross_score = db.Column('gross_score', db.Numeric(4), nullable=False)
-    considerate_score = db.Column('considerate_score', db.Numeric(4), nullable=False)
+    gross_score = db.Column('gross_score', db.Numeric(5), nullable=False)
+    considerate_score = db.Column('considerate_score', db.Numeric(5), nullable=False)
     classification = db.Column('classification', db.String(20), nullable=False)
 
     evaluation_test_result_id_evaluation_test = db.Column('fk_evaluation_test',
@@ -25,7 +25,7 @@ class ResultModel(db.Model):
                     'gross_score': self.gross_score,
                     'considerate_score': self.considerate_score,
                     'classification': self.classification,
-                    'evaluation_test_result_id_evaluation_evaluation': self.evaluation_test_result_id_evaluation_test
+                    'fk_evaluation_test': self.evaluation_test_result_id_evaluation_test
                 }
 
     @classmethod

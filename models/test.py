@@ -13,7 +13,7 @@ class TestModel(db.Model):
     id_test = db.Column('id_test', db.Integer, primary_key=True)
     name = db.Column('name', db.String(100), nullable=False)
     description = db.Column('description', db.String(255))
-    maximum_score = db.Column('maximum_score', db.Numeric(4))
+    maximum_score = db.Column('maximum_score', db.Numeric(5))
     type_of_test = db.Column('type', db.Enum(TypeEnum), nullable=False)
 
     evaluation_tests = db.relationship('EvaluationTestModel', backref='TEST', lazy='dynamic',

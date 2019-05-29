@@ -36,4 +36,12 @@ class CreateEvaluation(Resource):
         new_evaluation = EvaluationModel(data['dt_start'], data['dt_end'], data['conclusion'], data['anamnese'],
                                          data['test_pat_psycho_hosp_id_pat_psycho_hosp'])
         new_evaluation.save_to_db()
-        return {"message": "Evaluation created successfully."}, 201
+        return {"message": "Evaluation created successfully.", "id_evaluation": new_evaluation.id_evaluation}, 201
+
+
+class Result(Resource):
+    def post(self, name_test):
+        test = TestModel.find_by_name(name_test)
+
+        if test:
+

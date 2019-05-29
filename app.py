@@ -4,6 +4,8 @@ from flask import Flask, jsonify
 from flask_restful import Api
 from flask_jwt_extended import JWTManager
 from resources.create_evaluation import CreateEvaluation
+from resources.show_evaluation import ShowEvaluationID
+
 app = Flask(__name__)
 load_dotenv(".env")
 
@@ -23,6 +25,7 @@ def create_tables():
 
 jwt = JWTManager(app)
 api.add_resource(CreateEvaluation, '/evaluation')
+api.add_resource(ShowEvaluationID, '/evaluation/<id_evaluation>')
 
 if __name__ == '__main__':
     from db import db
