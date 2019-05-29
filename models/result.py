@@ -5,12 +5,12 @@ class ResultModel(db.Model):
     __tablename__ = 'RESULT'
 
     id_result = db.Column('id_result', db.Integer, primary_key=True)
-    gross_score = db.Column('gross_score', db.Decimal, nullable=False)
-    considerate_score = db.Column('considerate_score', db.Decimal, nullable=False)
+    gross_score = db.Column('gross_score', db.Numeric(4), nullable=False)
+    considerate_score = db.Column('considerate_score', db.Numeric(4), nullable=False)
     classification = db.Column('classification', db.String(20), nullable=False)
 
     evaluation_test_result_id_evaluation_test = db.Column('fk_evaluation_test',
-                                                          db.Integer, db.ForeignKey('EVALUATION_TEST.id_person'),
+                                                          db.Integer, db.ForeignKey('EVALUATION_TEST.id_evaluation_test'),
                                                           unique=True, nullable=False)
 
     def __init__(self, gross_score, considerate_score, classification, evaluation_test_result_id_evaluation_test):

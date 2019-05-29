@@ -30,7 +30,7 @@ class EvaluationModel(db.Model):
                     'conclusion': self.conclusion,
                     'anamnese': self.anamnese,
                     'test_pat_psycho_hosp_id_pat_psycho_hosp': self.test_pat_psycho_hosp_id_pat_psycho_hosp,
-                    'evaluation_tests': [evaluation_test.json() for evaluation_test in self.evaluation_tests.all()]
+                    # 'evaluation_tests': [evaluation_test.json() for evaluation_test in self.evaluation_tests.all()]
                 }
 
     @classmethod
