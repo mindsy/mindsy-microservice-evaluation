@@ -29,7 +29,7 @@ jwt = JWTManager(app)
 api.add_resource(CreateEvaluation, '/evaluation')
 api.add_resource(EditEvaluation, '/evaluation/<int:id_evaluation>')
 api.add_resource(ShowEvaluationID, '/evaluation/<int:id_evaluation>')
-api.add_resource(Result, '/test/<string:name_test>')
+api.add_resource(Result, '/test/<int:id_test>')
 
 if __name__ == '__main__':
     from db import db
