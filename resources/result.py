@@ -34,19 +34,19 @@ class Result(Resource):
             classification = None
             pondered_point = int(data['considerate_score'])
             if pondered_point > 15:
-                classification = "Classificação Superior"
+                classification = "Superior"
 
             if 12 <= pondered_point <= 14:
-                classification = "Classificação Média Superior"
+                classification = "Média Superior"
 
             if 8 <= pondered_point <= 11:
-                classification = " Classificação Média"
+                classification = "Média"
 
             if 5 <= pondered_point <= 7:
-                classification = " Classificação Média Inferior"
+                classification = " Média Inferior"
 
             if pondered_point <= 4:
-                classification = " Classificação Abaixo da Média (prejuízo)"
+                classification = "Abaixo da Média"
 
             if classification is None:
                 return {"message": "Something wrong happened"}
