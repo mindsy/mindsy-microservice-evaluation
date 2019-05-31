@@ -17,12 +17,6 @@ class EvaluationTestModel(db.Model):
         self.test_pat_psycho_hosp_id_evaluation = test_pat_psycho_hosp_id_evaluation
         self.test_pat_psycho_hosp_id_test = test_pat_psycho_hosp_id_test
 
-    def json(self):
-        return {
-                    'id_evaluation_test': self.id_evaluation_test,
-                    'fk_evaluation': self.test_pat_psycho_hosp_id_evaluation,
-                    'fk_test': self.test_pat_psycho_hosp_id_test,
-                }
 
     def save_to_db(self):
         db.session.add(self)
