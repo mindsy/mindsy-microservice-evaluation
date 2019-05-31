@@ -25,8 +25,8 @@ class EvaluationModel(db.Model):
     def json(self):
         return {
                     'id_evaluation': self.id_evaluation,
-                    # 'dt_start': self.dt_start.strftime("%d-%m-%Y"),
-                    # 'dt_end': self.dt_end.strftime("%d-%m-%Y"),
+                    'dt_start': str(self.dt_start),
+                    'dt_end': str(self.dt_end),
                     'conclusion': self.conclusion,
                     'anamnese': self.anamnese,
                 }

@@ -22,10 +22,9 @@ class ResultModel(db.Model):
     def json(self):
         return {
                     'id_result': self.id_result,
-                    'gross_score': self.gross_score,
-                    'considerate_score': self.considerate_score,
+                    'gross_score': str(self.gross_score),
+                    'considerate_score': str(self.considerate_score),
                     'classification': self.classification,
-                    'fk_evaluation_test': self.evaluation_test_result_id_evaluation_test
                 }
 
     @classmethod
