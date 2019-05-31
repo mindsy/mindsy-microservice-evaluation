@@ -25,7 +25,12 @@ class CreateEvaluation(Resource):
                         required=False,
                         type=lambda d: datetime.strptime(d, '%d-%m-%Y')
                         )
-    parser.add_argument('id_psychologist',
+    parser.add_argument('crp',
+                        type=str,
+                        required=True,
+                        help="This field cannot be blank."
+                        )
+    parser.add_argument('id_patient',
                         type=int,
                         required=True,
                         help="This field cannot be blank."
@@ -33,10 +38,11 @@ class CreateEvaluation(Resource):
 
     def post(self):
         data = CreateEvaluation.parser.parse_args()
-
+        id_pat_psycho_hosp = None
         new_evaluation = EvaluationModel(data['dt_start'], data['dt_end'], data['conclusion'], data['anamnese'],
-                                         data['id_pat_psycho_hosp'])
+                                         id_pat_psycho_hosp
+                                         )
         new_evaluation.save_to_db()
-        return {"message": "Evaluation created successfully.", "id_evaluation": new_evaluation.id_evaluation}, 201
+        return {"message": "Evaluation created successfully."}, 201
 
 
