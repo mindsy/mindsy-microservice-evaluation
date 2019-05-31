@@ -25,12 +25,10 @@ class EvaluationModel(db.Model):
     def json(self):
         return {
                     'id_evaluation': self.id_evaluation,
-                    'dt_start': self.dt_start.strftime("%d-%m-%Y"),
-                    'dt_end': self.dt_end.strftime("%d-%m-%Y"),
+                    # 'dt_start': self.dt_start.strftime("%d-%m-%Y"),
+                    # 'dt_end': self.dt_end.strftime("%d-%m-%Y"),
                     'conclusion': self.conclusion,
                     'anamnese': self.anamnese,
-                    'fk_pat_psycho_hosp': self.test_pat_psycho_hosp_id_pat_psycho_hosp,
-                    'evaluation_tests': [evaluation_test.json() for evaluation_test in self.evaluation_tests.all()]
                 }
 
     @classmethod
