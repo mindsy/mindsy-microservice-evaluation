@@ -13,4 +13,4 @@ class ShowEvaluationID(Resource):
 
             return {'evaluation': evaluation_info}
 
-        return {'message': 'User not found.'}, 404
+        return {'message': 'Evaluation not found.'}, 404

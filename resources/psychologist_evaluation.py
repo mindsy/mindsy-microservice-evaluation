@@ -28,4 +28,4 @@ class PsychologistEvaluationPatient(Resource):
             return {"evaluations": output}, 200
 
         else:
-            return {"message": "We could not located this crp or we could not located this id_patient"}, 400
+            return {"message": "We could not locate this crp or we could not locate this id_patient"}, 400
