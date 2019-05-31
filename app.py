@@ -1,6 +1,6 @@
 import os
 from dotenv import load_dotenv
-from flask import Flask, jsonify
+from flask import Flask
 from flask_restful import Api
 from flask_jwt_extended import JWTManager
 from resources.create_evaluation import CreateEvaluation
@@ -9,6 +9,7 @@ from resources.show_evaluation import ShowEvaluationID
 from resources.edit_evaluation import EditEvaluation
 from resources.psychologist_evaluation import PsychologistEvaluationPatient
 from resources.edit_result import EditResult
+from resources.result_test import ResultTest
 
 
 app = Flask(__name__)
@@ -35,6 +36,7 @@ api.add_resource(ShowEvaluationID, '/evaluation/<int:id_evaluation>')
 api.add_resource(Result, '/test/<int:id_test>')
 api.add_resource(PsychologistEvaluationPatient, '/psychologist-evaluation/<string:crp>/<int:id_patient>')
 api.add_resource(EditResult, '/test/<int:id_result>')
+api.add_resource(ResultTest, '/result/<int:id_evaluation>')
 
 
 if __name__ == '__main__':

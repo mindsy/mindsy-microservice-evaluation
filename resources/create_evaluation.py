@@ -25,7 +25,7 @@ class CreateEvaluation(Resource):
                         required=False,
                         type=lambda d: datetime.strptime(d, '%d-%m-%Y')
                         )
-    parser.add_argument('id_pat_psycho_hosp',
+    parser.add_argument('id_psychologist',
                         type=int,
                         required=True,
                         help="This field cannot be blank."
