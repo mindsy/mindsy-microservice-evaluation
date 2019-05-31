@@ -10,11 +10,7 @@ class EditResult(Resource):
     parser.add_argument('considerate_score',
                         required=False,
                         )
-    parser.add_argument('classification',
-                        type=str,
-                        required=False,
-                        )
-    
+
     def put(self, id_result):
         data = EditResult.parser.parse_args()
 
@@ -27,8 +23,28 @@ class EditResult(Resource):
             if data['considerate_score']:
                 result.considerate_score = data['considerate_score']
 
-            if data['classification']:
-                result.classification_score = data['classification']
+                classification = None
+                pondered_point = int(data['considerate_score'])
+
+                if pondered_point >= 15:
+                    classification = "Superior"
+
+                if 12 <= pondered_point <= 14:
+                    classification = "Média Superior"
+
+                if 8 <= pondered_point <= 11:
+                    classification = "Média"
+
+                if 5 <= pondered_point <= 7:
+                    classification = " Média Inferior"
+
+                if pondered_point <= 4:
+                    classification = "Abaixo da Média"
+
+                if classification is None:
+                    return {"message": "Something wrong happened"}
+
+                result.classification = classification
 
         else:
             return {'message': 'Result not found.'}, 404
