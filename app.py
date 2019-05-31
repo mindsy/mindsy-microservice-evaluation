@@ -8,6 +8,8 @@ from resources.result import Result
 from resources.show_evaluation import ShowEvaluationID
 from resources.edit_evaluation import EditEvaluation
 from resources.psychologist_evaluation import PsychologistEvaluationPatient
+from resources.edit_result import EditResult
+
 
 app = Flask(__name__)
 load_dotenv(".env")
@@ -32,6 +34,8 @@ api.add_resource(EditEvaluation, '/evaluation/<int:id_evaluation>')
 api.add_resource(ShowEvaluationID, '/evaluation/<int:id_evaluation>')
 api.add_resource(Result, '/test/<int:id_test>')
 api.add_resource(PsychologistEvaluationPatient, '/psychologist-evaluation/<string:crp>/<int:id_patient>')
+api.add_resource(EditResult, '/test/<int:id_result>')
+
 
 if __name__ == '__main__':
     from db import db
