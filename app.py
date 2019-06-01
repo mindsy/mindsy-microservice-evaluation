@@ -4,15 +4,7 @@ from flask import Flask
 from flask_restful import Api
 from flask_jwt_extended import JWTManager
 
-from resources.create_evaluation import CreateEvaluation
-from resources.result import Result
-from resources.show_evaluation import ShowEvaluationID
-from resources.delete_evaluation import DeleteEvaluation
-from resources.edit_evaluation import EditEvaluation
-from resources.psychologist_evaluation import PsychologistEvaluationPatient
-from resources.edit_result import EditResult
-from resources.result_test import ResultTest
-from resources.wisc_list import WiscList
+from static.resource_imports import *
 
 
 app = Flask(__name__)
@@ -38,12 +30,12 @@ api.add_resource(EditEvaluation, '/evaluation/<int:id_evaluation>')
 api.add_resource(ShowEvaluationID, '/evaluation/<int:id_evaluation>')
 api.add_resource(DeleteEvaluation, '/delete-evaluation/<int:id_evaluation>')
 
-# api.add_resource(ShowTestInformation, '/test-info/<int:id_test>')
 api.add_resource(Result, '/result/<int:id_test>')
 api.add_resource(PsychologistEvaluationPatient, '/psychologist-evaluation/<string:crp>/<int:id_patient>')
 api.add_resource(EditResult, '/result/<int:id_result>')
 api.add_resource(ResultTest, '/result/<int:id_evaluation>')
 api.add_resource(WiscList, '/wisc-list')
+api.add_resource(DeleteResult, '/delete-result/<int:id_result>')
 
 
 if __name__ == '__main__':
