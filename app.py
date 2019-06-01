@@ -6,6 +6,8 @@ from flask_jwt_extended import JWTManager
 from resources.create_evaluation import CreateEvaluation
 from resources.result import Result
 from resources.show_evaluation import ShowEvaluationID
+from resources.delete_evaluation import DeleteEvaluation
+from resources.test_information import ShowTestInformation
 
 app = Flask(__name__)
 load_dotenv(".env")
@@ -28,6 +30,8 @@ jwt = JWTManager(app)
 api.add_resource(CreateEvaluation, '/evaluation')
 api.add_resource(ShowEvaluationID, '/evaluation/<int:id_evaluation>')
 api.add_resource(Result, '/test/<string:name_test>')
+api.add_resource(DeleteEvaluation, '/delete-evaluation/<int:id_evaluation>')
+api.add_resource(ShowTestInformation, '/test-info/<int:id_test>')
 
 if __name__ == '__main__':
     from db import db
