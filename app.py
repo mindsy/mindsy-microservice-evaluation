@@ -7,7 +7,6 @@ from resources.create_evaluation import CreateEvaluation
 from resources.result import Result
 from resources.show_evaluation import ShowEvaluationID
 from resources.delete_evaluation import DeleteEvaluation
-from resources.test_information import ShowTestInformation
 from resources.edit_evaluation import EditEvaluation
 from resources.psychologist_evaluation import PsychologistEvaluationPatient
 from resources.edit_result import EditResult
@@ -35,12 +34,12 @@ jwt = JWTManager(app)
 api.add_resource(CreateEvaluation, '/evaluation')
 api.add_resource(EditEvaluation, '/evaluation/<int:id_evaluation>')
 api.add_resource(ShowEvaluationID, '/evaluation/<int:id_evaluation>')
-api.add_resource(Result, '/test/<string:name_test>')
 api.add_resource(DeleteEvaluation, '/delete-evaluation/<int:id_evaluation>')
-api.add_resource(ShowTestInformation, '/test-info/<int:id_test>')
-api.add_resource(Result, '/test/<int:id_test>')
+
+# api.add_resource(ShowTestInformation, '/test-info/<int:id_test>')
+api.add_resource(Result, '/result/<int:id_test>')
 api.add_resource(PsychologistEvaluationPatient, '/psychologist-evaluation/<string:crp>/<int:id_patient>')
-api.add_resource(EditResult, '/test/<int:id_result>')
+api.add_resource(EditResult, '/result/<int:id_result>')
 api.add_resource(ResultTest, '/result/<int:id_evaluation>')
 
 
