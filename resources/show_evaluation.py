@@ -11,8 +11,6 @@ class ShowEvaluationID(Resource):
         if evaluation:
             evaluation_info = evaluation.json()
 
-            output = {'Evaluation Information': [evaluation_info]}
+            return {'evaluation': evaluation_info}
 
-            return {'Show Information': output}
-
-        return {'message': 'User not found.'}, 404
+        return {'message': 'Evaluation not found.'}, 404

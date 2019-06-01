@@ -17,6 +17,10 @@ class PatPsychoHospModel(db.Model):
         self.pat_psycho_hosp_id_psycho_hosp = pat_psycho_hosp_id_psycho_hosp
         self.patient_hosp_psy_id_patient = patient_hosp_psy_id_patient
 
+    @classmethod
+    def find_by_crp(cls, crp):
+        return cls.query.filter_by(crp=crp).first()
+
     def save_to_db(self):
         db.session.add(self)
         db.session.commit()

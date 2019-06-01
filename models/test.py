@@ -30,7 +30,7 @@ class TestModel(db.Model):
                     'id_test': self.id_test,
                     'name': self.name,
                     'description': self.description,
-                    'maximum_score': self.maximum_score,
+                    'maximum_score': str(self.maximum_score),
                     'type': self.type_of_test.value
                 }
 
