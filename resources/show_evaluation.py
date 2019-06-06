@@ -14,15 +14,10 @@ class ShowEvaluationID(Resource):
             for ev in all_evaluations:
                 test_info = ev.TEST.json()
                 flag.append(test_info)
+                result_info = ev.results.json()
+                test_info.update({'results': result_info})
             evaluation_info.update({'tests': flag})
 
-            flag2 = []
-            for ev in all_evaluations:
-                result_info = ev.results.json()
-                flag2.append(result_info)
-
-            evaluation_info.update({'results': flag2})
-
-            return {'evaluation': evaluation_info}
+            return evaluation_info
 
         return {'message': 'Evaluation not found.'}, 404

@@ -52,6 +52,8 @@ class CreateEvaluation(Resource):
                                              pat_psycho_hosp[0].id_pat_psycho_hosp
                                              )
             new_evaluation.save_to_db()
-        return {"message": "Evaluation created successfully."}, 201
+            return {"message": "Evaluation created successfully."}, 201
+
+        return {"message": "We cannot create evaluation"}
 
 
