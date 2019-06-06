@@ -5,6 +5,7 @@ from flask_restful import Api
 from flask_jwt_extended import JWTManager
 
 from static.resource_imports import *
+from flask_cors import CORS
 
 
 app = Flask(__name__)
@@ -17,7 +18,7 @@ app.secret_key = os.environ.get("APP_SECRET_KEY")
 app.config['JWT_SECRET_KEY'] = os.environ.get("APP_SECRET_KEY")
 
 api = Api(app)
-
+CORS(app)
 
 @app.before_first_request
 def create_tables():
