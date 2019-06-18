@@ -7,6 +7,7 @@ from db import db
 from flask_cors import CORS
 
 from static.resource_imports import *
+from flask_cors import CORS
 
 
 app = Flask(__name__)
