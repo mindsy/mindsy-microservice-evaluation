@@ -3,6 +3,8 @@ from dotenv import load_dotenv
 from flask import Flask
 from flask_restful import Api
 from flask_jwt_extended import JWTManager
+from db import db
+from flask_cors import CORS
 
 from static.resource_imports import *
 
@@ -17,14 +19,9 @@ app.secret_key = os.environ.get("APP_SECRET_KEY")
 app.config['JWT_SECRET_KEY'] = os.environ.get("APP_SECRET_KEY")
 
 api = Api(app)
+CORS(app)
+db.init_app(app)
 
-
-@app.before_first_request
-def create_tables():
-    db.create_all()
-
-
-jwt = JWTManager(app)
 api.add_resource(CreateEvaluation, '/evaluation')
 api.add_resource(EditEvaluation, '/evaluation/<int:id_evaluation>')
 api.add_resource(ShowEvaluationID, '/evaluation/<int:id_evaluation>')
@@ -39,6 +36,4 @@ api.add_resource(DeleteResult, '/delete-result/<int:id_result>')
 
 
 if __name__ == '__main__':
-    from db import db
-    db.init_app(app)
     app.run(debug=True, host='0.0.0.0')
