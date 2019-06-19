@@ -16,8 +16,10 @@ class ShowEvaluationID(Resource):
                 flag.append(test_info)
                 result_info = ev.results.json()
                 test_info.update({'results': result_info})
+
             evaluation_info.update({'tests': flag})
 
             return evaluation_info
 
         return {'message': 'Evaluation not found.'}, 404
+
