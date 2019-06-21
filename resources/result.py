@@ -27,6 +27,9 @@ class Result(Resource):
 
         if test:
             data = Result.parser.parse_args()
+            if not EvaluationModel.find_by_id(data['id_evaluation']):
+                 return {'message': 'Evaluation not found.'}, 404
+
             new_evaluation_test = EvaluationTestModel(data['id_evaluation'],
                                                       test.id_test)
             new_evaluation_test.save_to_db()
