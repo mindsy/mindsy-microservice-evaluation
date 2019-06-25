@@ -22,9 +22,9 @@ api.add_resource(CreateEvaluation, '/evaluation')
 api.add_resource(EditEvaluation, '/evaluation/<int:id_evaluation>')
 api.add_resource(ShowEvaluationID, '/evaluation/<int:id_evaluation>')
 api.add_resource(DeleteEvaluation, '/delete-evaluation/<int:id_evaluation>')
+api.add_resource(PsychologistEvaluationPatient, '/psychologist-evaluation/<string:crp>/<int:id_patient>')
 
 api.add_resource(Result, '/result/<int:id_test>')
-api.add_resource(PsychologistEvaluationPatient, '/psychologist-evaluation/<string:crp>/<int:id_patient>')
 api.add_resource(EditResult, '/result/<int:id_result>')
 api.add_resource(ResultTest, '/result/<int:id_evaluation>')
 api.add_resource(WiscList, '/wisc-list')
@@ -32,4 +32,4 @@ api.add_resource(DeleteResult, '/delete-result/<int:id_result>')
 
 
 if __name__ == '__main__':
-    app.run(debug=True, host='0.0.0.0')
+    app.run(debug=True, host='0.0.0.0', port=5003)
